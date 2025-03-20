@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  my-tests:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          name: My Test Suite
+          command: |
+            echo "tests are running"
+workflows:
+  build-and-test:
+    jobs:
+      - my-tests
