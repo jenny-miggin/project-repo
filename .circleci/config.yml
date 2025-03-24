@@ -30,6 +30,7 @@ jobs:
           name: My Test Suite
           command: |
             echo "tests are running"
+            exit 1
   trigger-notification:
     docker:
       - image: cimg/base:stable
