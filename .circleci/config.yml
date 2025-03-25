@@ -4,20 +4,9 @@ commands:
   trigger-pipeline-fail-notification:
     steps:
       - run:
-          name: Trigger a notification on failed pipeline when a PR is open
+          name: Trigger a webhook on failed pipeline when a PR is open
           command: |
-            curl --request POST \
-              --url https://circleci.com/api/v2/project/gh/jenny-miggin/config-repo/pipeline/run \
-              --header "Circle-Token: $CIRCLECI_API_TOKEN" \
-              --header 'content-type: application/json' \
-              --data '{"definition_id":"6867b583-4021-4635-b37a-cc62e88b8763","config":{"branch":"main"},"checkout":{"branch":"main"}}' 
-        
-  trigger-inbound-webhook-fail-notification:
-    steps:
-      - run:
-          name: Trigger a notification on failed pipeline when a PR is open
-          command: |
-            curl -X POST -H "content-type: application/json" 'https://internal.circleci.com/private/soc/e/b33ea326-fd7e-49b1-a6bb-04bb5eb12813?secret=${WEBHOOK_SECRET}'
+            curl -X POST -H "content-type: application/json" 'https://internal.circleci.com/private/soc/e/b33ea326-fd7e-49b1-a6bb-04bb5eb12813?secret=${WEBHOOK_SECRET}
 
 jobs:
   my-tests:
@@ -29,15 +18,15 @@ jobs:
       - run:
           name: My Test Suite
           command: |
-            echo "tests are running"
+            echo "tests are running and are going to fail"
             exit 1
+
   trigger-notification:
     docker:
       - image: cimg/base:stable
     resource_class: small
     steps:
       - trigger-pipeline-fail-notification
-      - trigger-inbound-webhook-fail-notification
 
 workflows:
   build-and-test:
