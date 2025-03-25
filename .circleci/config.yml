@@ -10,7 +10,7 @@ commands:
               --url https://circleci.com/api/v2/project/gh/jenny-miggin/config-repo/pipeline/run \
               --header "Circle-Token: $CIRCLECI_API_TOKEN" \
               --header 'content-type: application/json' \
-              --data '{"definition_id":"6867b583-4021-4635-b37a-cc62e88b8763","config":{"branch":"main"},"checkout":{"branch":"main"},"parameters":{"COMMIT_SHA":"$CIRCLE_REVISION"}}' 
+              --data '{"definition_id":"6867b583-4021-4635-b37a-cc62e88b8763","config":{"branch":"main"},"checkout":{"branch":"main"},"parameters":{"COMMIT_SHA":"$CIRCLE_SHA1"}}' 
 
 jobs:
   my-tests:
