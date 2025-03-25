@@ -6,7 +6,7 @@ commands:
       - run:
           name: Trigger a webhook on failed pipeline when a PR is open
           command: |
-            curl -X POST -H "content-type: application/json" 'https://internal.circleci.com/private/soc/e/b33ea326-fd7e-49b1-a6bb-04bb5eb12813?secret=${WEBHOOK_SECRET}
+            curl -X POST -H "content-type: application/json" 'https://internal.circleci.com/private/soc/e/b33ea326-fd7e-49b1-a6bb-04bb5eb12813?secret=${WEBHOOK_SECRET}'
 
 jobs:
   my-tests:
