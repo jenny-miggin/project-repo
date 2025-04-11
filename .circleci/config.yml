@@ -35,8 +35,8 @@ workflows:
   build-and-test:
     jobs:
       - my-tests
-      - trigger-notification:
-          requires:
-            - my-tests:
-                - failed
-          context: cci
+      # - trigger-notification:
+      #     requires:
+      #       - my-tests:
+      #           - failed
+      #     context: cci
