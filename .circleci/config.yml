@@ -11,6 +11,8 @@ jobs:
           name: My Test Suite
           command: |
             echo "tests are running"
+            exit 1
+
 workflows:
   build-and-test:
     jobs:
